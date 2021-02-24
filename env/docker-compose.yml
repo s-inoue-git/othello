@@ -1,0 +1,14 @@
+version: '3'
+services:
+    python-env:
+        container_name: $COMPOSE_PROJECT_NAME
+        build: 
+            context: .
+            args:
+              - git_repo_name=$COMPOSE_PROJECT_NAME
+        image: $COMPOSE_PROJECT_NAME #for naming image(pull will not be execute)
+        volumes:
+            - ..:/home/$COMPOSE_PROJECT_NAME
+        working_dir: /home/$COMPOSE_PROJECT_NAME
+        tty: true
+        stdin_open: true
